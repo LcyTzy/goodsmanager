@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:spacing="8dp">
+
+        <!-- 品名 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="品名："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入货物名称"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- 系列 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系列："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_series"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入系列（如：精品塑料桶汽机油）"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- 质量级别 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="质量级别："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_quality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入质量级别（如：SJ (合成技术)，无则空）"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- 粘度等级 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="粘度等级："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_viscosity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入粘度等级（如：10W-30，无则空）"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- 规格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="规格："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入规格（如：3.5L*6，无则空）"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- 单位 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单位："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入单位（如：桶、个，默认个）"
+                android:inputType="text"
+                android:text="个" />
+        </LinearLayout>
+
+        <!-- 适用车型 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="适用车型："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入适用车型（如：丰田,本田，无则空）"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- 价格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="价格："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入价格（如：44.00）"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- 分类选择 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分类："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <Spinner
+                android:id="@+id/spinner_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <!-- 库存 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="库存："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入库存数量（默认10）"
+                android:inputType="number"
+                android:text="10" />
+        </LinearLayout>
+
+        <!-- 提交按钮 -->
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="提交"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

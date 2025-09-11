@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 1. 应用基础主题（仅保留核心配置，无任何多余引用） -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 主色调：Toolbar、按钮等核心元素颜色 -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@android:color/black</item>
+
+        <!-- 状态栏和页面背景 -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/light_gray</item>
+    </style>
+
+    <!-- 2. 正文文字样式（中等大小：如货物详情、列表文字） -->
+    <style name="TextStyle_BodyMedium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- 3. 标题文字样式（较大尺寸：如货物名称、页面标题） -->
+    <style name="TextStyle_BodyLarge">
+        <item name="android:fontFamily">sans-serif-bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- 4. 弹窗标题样式（如AlertDialog标题） -->
+    <style name="TextStyle_AlertDialogTitle">
+        <item name="android:fontFamily">sans-serif-bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- 5. 弹窗正文样式（如AlertDialog内容） -->
+    <style name="TextStyle_AlertDialogBody">
+        <item name="android:fontFamily">sans-serif-normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+</resources>
