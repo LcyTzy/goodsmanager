@@ -1,6 +1,5 @@
 package com.example.goodsmanagerapp;
 
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,8 +17,9 @@ import com.example.goodsmanagerapp.entity.Goods;
 import java.util.concurrent.Executors;
 
 public class GoodsEditActivity extends AppCompatActivity {
-    private EditText etName, etSeries, etQuality, etViscosity, etSpec, etUnit, etModel, etPrice, etStock;
-    private Spinner spinnerCategory; // 新增：分类Spinner
+    private EditText etName, etSeries, etQuality, etViscosity, etSpec, etUnit, etModel,
+            etPrice, etPriceCustomer1, etPriceCustomer2, etPriceCustomer3, etStock;
+    private Spinner spinnerCategory;
     private Button btnSubmit;
     private GoodsDatabase db;
     private long editGoodsId = -1;
@@ -29,13 +29,9 @@ public class GoodsEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_goods);
 
-        // 1. 绑定控件
         initViews();
-
-        // 2. 初始化数据库
         db = GoodsDatabase.getInstance(this);
 
-        // 3. 初始化“分类Spinner”的选项（示例分类：可根据实际业务调整）
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -44,13 +40,11 @@ public class GoodsEditActivity extends AppCompatActivity {
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(categoryAdapter);
 
-        // 4. 判断是否为“编辑模式”，加载已有货物数据
         editGoodsId = getIntent().getLongExtra("GOODS_ID", -1);
         if (editGoodsId != -1) {
             loadEditGoodsData();
         }
 
-        // 5. 提交按钮点击事件
         btnSubmit.setOnClickListener(v -> submitGoods());
     }
 
@@ -63,8 +57,11 @@ public class GoodsEditActivity extends AppCompatActivity {
         etUnit = findViewById(R.id.et_unit);
         etModel = findViewById(R.id.et_model);
         etPrice = findViewById(R.id.et_price);
+        etPriceCustomer1 = findViewById(R.id.et_price_customer1);
+        etPriceCustomer2 = findViewById(R.id.et_price_customer2);
+        etPriceCustomer3 = findViewById(R.id.et_price_customer3);
         etStock = findViewById(R.id.et_stock);
-        spinnerCategory = findViewById(R.id.spinner_category); // 绑定分类Spinner
+        spinnerCategory = findViewById(R.id.spinner_category);
         btnSubmit = findViewById(R.id.btn_submit);
     }
 
@@ -75,7 +72,7 @@ public class GoodsEditActivity extends AppCompatActivity {
                 runOnUiThread(this::finish);
                 return;
             }
-            // 主线程填充表单（含分类）
+
             runOnUiThread(() -> {
                 etName.setText(goods.getName());
                 etSeries.setText(goods.getSeries());
@@ -85,8 +82,11 @@ public class GoodsEditActivity extends AppCompatActivity {
                 etUnit.setText(goods.getUnit());
                 etModel.setText(goods.getApplicableModel());
                 etPrice.setText(String.valueOf(goods.getPrice()));
+                etPriceCustomer1.setText(String.valueOf(goods.getPriceCustomer1()));
+                etPriceCustomer2.setText(String.valueOf(goods.getPriceCustomer2()));
+                etPriceCustomer3.setText(String.valueOf(goods.getPriceCustomer3()));
                 etStock.setText(String.valueOf(goods.getStock()));
-                // 选中当前货物的分类
+
                 int categoryPos = ((ArrayAdapter<String>) spinnerCategory.getAdapter())
                         .getPosition(goods.getCategory());
                 if (categoryPos != -1) {
@@ -98,7 +98,6 @@ public class GoodsEditActivity extends AppCompatActivity {
     }
 
     private void submitGoods() {
-        // 1. 获取输入（含分类）
         String name = etName.getText().toString().trim();
         String series = etSeries.getText().toString().trim();
         String quality = etQuality.getText().toString().trim();
@@ -107,27 +106,40 @@ public class GoodsEditActivity extends AppCompatActivity {
         String unit = etUnit.getText().toString().trim();
         String model = etModel.getText().toString().trim();
         String priceStr = etPrice.getText().toString().trim();
+        String price1Str = etPriceCustomer1.getText().toString().trim();
+        String price2Str = etPriceCustomer2.getText().toString().trim();
+        String price3Str = etPriceCustomer3.getText().toString().trim();
         String stockStr = etStock.getText().toString().trim();
-        String category = spinnerCategory.getSelectedItem().toString(); // 获取分类
+        String category = spinnerCategory.getSelectedItem().toString();
 
-        // 2. 验证输入
         if (name.isEmpty() || priceStr.isEmpty() || stockStr.isEmpty()) {
             Toast.makeText(this, "品名、价格、库存为必填项！", Toast.LENGTH_SHORT).show();
             return;
         }
-        double price;
-        int stock;
+
+        // 如果客户价格未填写，使用默认价格
+        double price, price1, price2, price3;
         try {
             price = Double.parseDouble(priceStr);
-            stock = Integer.parseInt(stockStr);
+            price1 = price1Str.isEmpty() ? price : Double.parseDouble(price1Str);
+            price2 = price2Str.isEmpty() ? price : Double.parseDouble(price2Str);
+            price3 = price3Str.isEmpty() ? price : Double.parseDouble(price3Str);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "价格/库存格式错误！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "价格格式错误！", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // 3. 数据库操作（新增/更新，含category）
+        int stock;
+        try {
+            stock = Integer.parseInt(stockStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "库存格式错误！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Executors.newSingleThreadExecutor().execute(() -> {
-            Goods goods = new Goods(name, series, quality, viscosity, spec, unit, model, price, stock, category);
+            Goods goods = new Goods(name, series, quality, viscosity, spec, unit, model,
+                    price, price1, price2, price3, stock, category);
             if (editGoodsId == -1) {
                 db.goodsDao().insert(goods);
                 runOnUiThread(() -> {

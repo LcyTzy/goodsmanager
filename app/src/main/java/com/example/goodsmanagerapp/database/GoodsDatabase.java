@@ -29,6 +29,7 @@ public abstract class GoodsDatabase extends RoomDatabase {
                                     "goods_database" // 数据库文件名
                             )
                             .allowMainThreadQueries() // 临时允许主线程操作（简化示例，正式项目用子线程）
+                            .fallbackToDestructiveMigration() // 开发阶段使用（删除旧表重建）
                             .build();
                 }
             }

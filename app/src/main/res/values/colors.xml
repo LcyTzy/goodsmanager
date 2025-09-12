@@ -15,4 +15,27 @@
     <!-- 文字色 -->
     <color name="text_primary">#333333</color>
     <color name="text_secondary">#666666</color>
+
+    <!-- 主背景色：柔和浅灰，比原light_gray更现代 -->
+    <color name="bg_main">#F5F7FA</color>
+    <!-- Toolbar/次级背景：比主背景深一度，区分层级 -->
+    <color name="bg_secondary">#E8EBF0</color>
+    <!-- 深灰文字：标题/正文，比黑色柔和不刺眼 -->
+    <color name="text_dark">#2D3748</color>
+    <!-- 中灰文字：辅助信息（系列/分类） -->
+    <color name="text_medium">#718096</color>
+    <!-- 浅灰文字：提示语（搜索Hint） -->
+    <color name="text_light">#A0AEC0</color>
+    <!-- 主功能色：用于添加/确认按钮，专业不刺眼 -->
+    <color name="primary_blue">#2B6CB0</color>
+    <!-- 主功能色-浅：按钮按下反馈 -->
+    <color name="primary_blue_light">#EBF2FA</color>
+    <!-- 警示色：删除/价格，饱和不刺眼 -->
+    <color name="danger_red">#E53E3E</color>
+    <!-- 警示色-浅：删除按钮按下反馈 -->
+    <color name="danger_red_light">#FED7D7</color>
+    <!-- 边框/分隔线色：浅灰，弱化边界感 -->
+    <color name="border_gray">#CBD5E0</color>
+    <!-- 按压反馈色：通用浅灰，统一交互感 -->
+    <color name="press_gray">#EDF2F7</color>
 </resources>

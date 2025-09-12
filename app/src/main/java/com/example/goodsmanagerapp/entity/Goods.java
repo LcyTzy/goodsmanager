@@ -1,6 +1,5 @@
 package com.example.goodsmanagerapp.entity;
 
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -15,13 +14,19 @@ public class Goods {
     private String spec;
     private String unit;
     private String applicableModel;
-    private double price;
+    private double price; // 基础价格
+    // 新增：三个客户价格
+    private double priceCustomer1;
+    private double priceCustomer2;
+    private double priceCustomer3;
     private int stock;
-    private String category; // 新增：货物分类
+    private String category;
 
-    // 全参构造（含category）
+    // 全参构造（包含三个客户价格）
     public Goods(String name, String series, String qualityLevel, String viscosityLevel,
-                 String spec, String unit, String applicableModel, double price, int stock, String category) {
+                 String spec, String unit, String applicableModel, double price,
+                 double priceCustomer1, double priceCustomer2, double priceCustomer3,
+                 int stock, String category) {
         this.name = name;
         this.series = series;
         this.qualityLevel = qualityLevel;
@@ -30,11 +35,14 @@ public class Goods {
         this.unit = unit;
         this.applicableModel = applicableModel;
         this.price = price;
+        this.priceCustomer1 = priceCustomer1;
+        this.priceCustomer2 = priceCustomer2;
+        this.priceCustomer3 = priceCustomer3;
         this.stock = stock;
         this.category = category;
     }
 
-    // Getter + Setter（新增category的Get/Set）
+    // Getter和Setter（新增三个客户价格的方法）
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
     public String getName() { return name; }
@@ -53,6 +61,13 @@ public class Goods {
     public void setApplicableModel(String applicableModel) { this.applicableModel = applicableModel; }
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+    // 客户价格的Getter/Setter
+    public double getPriceCustomer1() { return priceCustomer1; }
+    public void setPriceCustomer1(double priceCustomer1) { this.priceCustomer1 = priceCustomer1; }
+    public double getPriceCustomer2() { return priceCustomer2; }
+    public void setPriceCustomer2(double priceCustomer2) { this.priceCustomer2 = priceCustomer2; }
+    public double getPriceCustomer3() { return priceCustomer3; }
+    public void setPriceCustomer3(double priceCustomer3) { this.priceCustomer3 = priceCustomer3; }
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
     public String getCategory() { return category; }

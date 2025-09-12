@@ -153,7 +153,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="价格："
+                android:text="默认价格："
                 android:textSize="16sp"
                 android:width="80dp" />
             <EditText
@@ -161,6 +161,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="输入价格（如：44.00）"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- 客户1价格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客户1价格："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_price_customer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入客户1价格"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- 客户2价格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客户2价格："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_price_customer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入客户2价格"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- 客户3价格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客户3价格："
+                android:textSize="16sp"
+                android:width="80dp" />
+            <EditText
+                android:id="@+id/et_price_customer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入客户3价格"
                 android:inputType="numberDecimal" />
         </LinearLayout>
 
@@ -181,6 +238,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
         <!-- 库存 -->
         <LinearLayout
             android:layout_width="match_parent"
