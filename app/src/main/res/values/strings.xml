@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">新卓越汽修公司</string>
+    <string name="btn_plus_text">+</string>
+    <string name="btn_mius_text">-</string>
+</resources>

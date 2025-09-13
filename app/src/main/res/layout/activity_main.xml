@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    tools:context=".MainActivity">
+
+    <!-- 顶部工具栏：区分层级，突出标题 -->
+<androidx.appcompat.widget.Toolbar
+android:id="@+id/toolbar"
+android:layout_width="match_parent"
+android:layout_height="?attr/actionBarSize"
+android:background="@color/bg_secondary"
+    android:elevation="2dp"
+    app:title="货物管理系统"
+    app:titleTextColor="@color/text_dark"
+    app:titleTextStyle="?attr/textAppearanceHeadline6"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 搜索框：自定义圆角样式，避免默认粗糙感 -->
+<SearchView
+android:id="@+id/search_view"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/search_bg"
+    android:iconifiedByDefault="false"
+    android:queryHint="搜索货物品名/系列..."
+    android:textColor="@color/text_dark"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+
+
+    <!-- 分类筛选下拉框：统一圆角+边框样式 -->
+<Spinner
+android:id="@+id/spinner_category_filter"
+android:layout_width="match_parent"
+android:layout_height="48dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/spinner_bg"
+    android:popupBackground="@color/bg_secondary"
+    android:gravity="center_vertical|start"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:textColor="@color/text_dark"
+    android:textSize="14sp"
+    app:layout_constraintTop_toBottomOf="@id/search_view"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 客户选择悬浮按钮：非核心功能，用中灰弱化 -->
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_customer"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_margin="16dp"
+    android:backgroundTint="@color/text_medium"
+    android:src="@drawable/ic_person"
+    android:tint="@android:color/white"
+    app:elevation="4dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 添加货物悬浮按钮：核心功能，用蓝色突出 -->
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fab_add"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_margin="16dp"
+    android:backgroundTint="@color/primary_blue"
+    android:src="@drawable/ic_add"
+    android:tint="@android:color/white"
+    app:elevation="4dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 货物列表RecyclerView：核心内容区，优化边距和分隔 -->
+<androidx.recyclerview.widget.RecyclerView
+android:id="@+id/rv_goods"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:divider="@drawable/recycler_divider"
+    android:dividerHeight="8dp"
+    app:layout_constraintTop_toBottomOf="@id/spinner_category_filter"
+    app:layout_constraintBottom_toTopOf="@id/fab_add"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
